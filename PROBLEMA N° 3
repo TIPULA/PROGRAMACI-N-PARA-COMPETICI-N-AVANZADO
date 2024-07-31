@@ -1,0 +1,29 @@
+def generate_subsets(arr):
+    subsets = []
+    
+    # Función recursiva para generar subconjuntos
+    def generate(current, index):
+        if index == len(arr):
+            subsets.append(current[:])  # Agrega una copia de 'current' a 'subsets'
+            return
+        
+        # Caso 1: No incluir el elemento actual en el subconjunto
+        generate(current, index + 1)
+        
+        # Caso 2: Incluir el elemento actual en el subconjunto
+        current.append(arr[index])
+        generate(current, index + 1)
+        
+        # Backtrack: Remover el elemento actual del subconjunto antes de volver a la llamada anterior
+        current.pop()
+    
+    generate([], 0)  # Llamada inicial con subconjunto vacío y índice 0
+    return subsets
+
+# Ejemplo de uso
+arr = [1, 2, 3]
+subsets = generate_subsets(arr)
+
+# Imprimir todos los subconjuntos
+for subset in subsets:
+    print(subset)
