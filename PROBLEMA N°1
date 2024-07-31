@@ -1,1 +1,18 @@
+def has_pair_with_sum(arr, k):
+    n = len(arr)
+    
+    for i in range(n):
+        for j in range(i + 1, n):
+            if arr[i] + arr[j] == k:
+                return True
+                
+    return False
 
+# Ejemplo de uso
+arr = [4, 1, 5, 2, 3]
+k = 7
+
+if has_pair_with_sum(arr, k):
+    print(f"Existen dos números en el arreglo cuya suma es igual a {k}.")
+else:
+    print(f"No existen dos números en el arreglo cuya suma sea igual a {k}.")
